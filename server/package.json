@@ -1,0 +1,53 @@
+{
+  "name": "express-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "lint": "eslint . --ext .ts --fix",
+    "commit": "npm run lint && git add . && git-cz && git push",
+    "faker": "echo TO-DO",
+    "start": "node dist/src/index.js",
+    "dev": "npx nodemon src/index.ts",
+    "delete": "rimraf ./dist",
+    "build": "npm run delete && tsc",
+    "test": "jest"
+  },
+  "repository": {
+    "private": true,
+    "type": "git",
+    "url": "https://github.com/Woohaik/express-typescript-boilerplate"
+  },
+  "keywords": [],
+  "author": "Wilfredo Oswaldo Hernández Argueta",
+  "license": "MIT",
+  "dependencies": {
+    "cz-conventional-changelog": "^3.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12",
+    "socket.io": "^4.4.1",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/faker": "^5.5.9",
+    "@types/jest": "^27.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "eslint": "^8.1.0",
+    "faker": "^5.5.3",
+    "husky": "^7.0.4",
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.14",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.7",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

@@ -1,34 +1,23 @@
-import React, { useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { io } from "socket.io-client";
+import Navbar from "./components/Layout/Navbar"
+import Body from './components/Layout/Body';
+import Sidebar from './components/Layout/Sidebar';
+import SocketProvider from './components/Socket.Provider';
+
 
 
 const App = () => {
 
-  useEffect(() => {
-    const socket = io("http://localhost:4000")
-    socket.on("messagee", message => {
-      console.log(message)
-    })
-  }, []);
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" id="chat-app">
+      <SocketProvider>
+        <Navbar />
+        <div id="app">
+
+          <Sidebar />
+          <Body />
+        </div>
+      </SocketProvider>
     </div>
   );
 }

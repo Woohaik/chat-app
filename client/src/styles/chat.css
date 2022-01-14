@@ -1,0 +1,88 @@
+#navbar button {
+    width: 100px;
+}
+
+#navbar #app-name {
+    font-size: 20px;
+}
+
+#sidebar .chat {
+    cursor: pointer;
+    background-color: #095b70;
+}
+
+#sidebar .chat:hover {
+    background-color: #f7e7bc;
+    color: black;
+}
+
+#sidebar .users {
+    max-height: 250px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#sidebar .users .user {
+    background-color: rgb(23, 134, 119);
+    height: 25px;
+}
+
+#sidebar .users .user:hover {
+    background-color: gray;
+}
+
+#app-body .msg-area {
+    color: white;
+    overflow-y: auto;
+    max-height: calc(100% - 35px);
+    height: calc(100% - 35px);
+    background-color: rgb(85, 87, 189);
+    box-sizing: border-box;
+    padding: 10px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+#app-body .msg-area .message-box {
+    display: flex;
+    gap: 10px;
+}
+
+#app-body .msg-area .message-box .message-name {
+    max-width: 15ch;
+    min-width: 11ch;
+
+    position: relative;
+    height: 35px;
+    max-height: 35px;
+}
+
+#app-body .msg-area .message-box .message-name .message-sent {
+    position: absolute;
+    bottom: 0px;
+    font-size: 12px;
+}
+
+#app-body .msg-area .message-box .message-content {
+    max-width: fit-content;
+}
+
+#app-body .input-area {
+    background-color: white;
+    height: 35px;
+    display: flex;
+    gap: 10px;
+    padding: 5px 10px;
+    box-sizing: border-box;
+}
+
+#app-body .input-area input {
+    width: 100%;
+}
+
+#app-body .input-area button {
+    width: 100px;
+}

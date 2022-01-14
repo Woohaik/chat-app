@@ -1,24 +1,18 @@
-import './App.css';
-import Navbar from "./components/Layout/Navbar"
-import Body from './components/Layout/Body';
-import Sidebar from './components/Layout/Sidebar';
-import SocketProvider from './components/Socket.Provider';
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import './styles/layout.css';
 
-
+import Chat from './views/Chat';
+import EnterName from "./views/EnterName";
 
 const App = () => {
 
   return (
-    <div className="App" id="chat-app">
-      <SocketProvider>
-        <Navbar />
-        <div id="app">
-
-          <Sidebar />
-          <Body />
-        </div>
-      </SocketProvider>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<EnterName />} />
+        <Route path="/chat" element={<Chat />} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,0 +1,24 @@
+#name-view {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#name-view .container {
+    flex-direction: column;
+    display: flex;
+    background-color: #1f4c58;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    max-height: 350px;
+    min-height: 300px;
+    height: 50%;
+    width: 95%;
+    max-width: 500px;
+    color: white;
+    border-radius: 25px;
+    border: solid 1px white;
+    box-shadow: 10px 10px 10px 15px rgba(0, 0, 0, 0.1);
+}

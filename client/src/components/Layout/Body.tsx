@@ -1,38 +1,33 @@
-import { useContext } from "react";
-import { chatContext } from "../Socket.Provider";
+import { useContext, useState } from "react";
+import MessageBox from "../MessageBox";
+import { chatContext, chatMethodsContext } from "../Socket.Provider";
 
 const Body = () => {
-    const simon = useContext(chatContext)
+    const theChat = useContext(chatContext);
+    const messagesFunctions = useContext(chatMethodsContext);
+    const [msg, setMsg] = useState("");
+    const sendMessage = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        messagesFunctions.sendMessageToGeneralChat(msg);
+        setMsg("");
+
+
+
+    };
+
+
     return (
         <div id="app-body">
             <div className="msg-area">
-                <div className="message-box">
-                    <div className="message-name">
-                        <b>Minecraft </b>
-                        <div className="message-sent">
-                            12/15/22 12: 15
-                        </div>
-                    </div>
-                    <div className="message-content">
-                        {JSON.stringify(simon)}
-                    </div>
-                </div>
-                <div className="message-box">
-                    <div className="message-name">
-                        <b>Minecraft </b>
-                        <div className="message-sent">
-                            12/15/22 12: 15
-                        </div>
-                    </div>
-                    <div className="message-content">
-                        Hola papus que tal Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quisquam, distinctio vel labore eaque cumque architecto, ducimus optio aspernatur quod odio consequatur consequuntur id? Alias quisquam quibusdam atque perspiciatis tempore?
-                    </div>
-                </div>
+                {
+                    theChat.generalChat.messages.map(message => (<MessageBox username={message.user.username} body={message.body} sent={message.sent} />))
+                }
             </div>
-            <div className="input-area">
-                <input type="text" />
-                <button>Enviar</button>
-            </div>
+            <form className="input-area" onSubmit={sendMessage}>
+                <input type="text" value={msg} onChange={(e) => setMsg(e.target.value)} placeholder="Escribe aquí..." />
+                <button type="submit">Enviar</button>
+            </form>
         </div>
     )
 }

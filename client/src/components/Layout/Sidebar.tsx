@@ -1,32 +1,23 @@
+import { useContext } from "react";
+import { chatContext } from "../Socket.Provider";
+
 const Sidebar = () => {
+    const theChat = useContext(chatContext);
+
     return (
         <div id="sidebar">
-            <div>
-                Chat General
+            <div className="chat">
+                General
             </div>
-
             <h4>
                 Usuarios Conectados:
             </h4>
-
             <div className="users">
-                <div className="user">Mangote verde</div>
-                <div className="user">Mangote verde</div>
-                <div className="user">Mangote verde</div>
-                <div className="user">Mangote verde</div>
-                <div className="user">Mangote verde</div>
-                <div className="user">Mangote verde</div>
-                <div className="user">Mangote verde</div>
-                <div className="user">Mangote verde</div>
-                <div className="user">Mangote verde</div>
-                <div className="user">Mangote verde</div>
-                <div className="user">Mangote verde</div>
-                <div className="user">Mangote verde</div>
-                <div className="user">Mangote verde</div>
-                <div className="user">Mangote verde</div>
+                {theChat.users.map(user => (
+                    <div className="user ">{user.username}</div>
+                ))}
+
             </div>
-
-
         </div>
     )
 }

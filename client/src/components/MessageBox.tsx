@@ -1,17 +1,43 @@
-const MessageBox = () => {
+import { FC } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { getDateElements } from "../utils";
+
+interface IProps {
+    username: string;
+    sent: string; // ISO string
+    body: string;
+}
+
+
+const MessageBox: FC<IProps> = (props: IProps) => {
+    const search = useLocation().search;
+    const username = new URLSearchParams(search).get('u');
+    const navigation = useNavigate();
+    if (!username) navigation("/");
+
+    const dateParser = (date: string) => {
+        const { day, month, year, hour, minutes } = getDateElements(new Date(date));
+        return `${day}/${month}/${year} ${hour}:${minutes}`;
+    };
+
     return (
-        <div className="message-box">
-            <div className="message-name">
-                <b>Minecraft </b>
-                <div className="message-sent">
-                    12/15/22 12: 15
+        <div className="message-box" style={{ "flexDirection": username === props.username ? "row-reverse" : "row", "justifyContent": props.username === "???" ? "center" : "unset" }}>
+
+            {
+                props.username !== "???" // ??? Significa que es un mensaje del servidor
+                && (<div className="message-name">
+                    <b>{props.username ?? " - Error"}</b>
+                    <div className="message-sent">
+                        {dateParser(props.sent)}
+                    </div>
                 </div>
-            </div>
+                )
+            }
             <div className="message-content">
-                sit amet consectetur adipisicing elit. Cupiditate quisquam, distinctio vel labore eaque cumque architecto, ducimus optio aspernatur quod odio consequatur consequuntur id? Alias quisquam quibusdam atque perspiciatis tempore?
+                {props.body}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default MessageBox;

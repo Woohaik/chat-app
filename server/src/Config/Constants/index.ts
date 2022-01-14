@@ -6,4 +6,4 @@ export const MESSAGE_TOPICS = {
     OWN_USER_ERROR: "OWN_USER_ERROR"
 };
 
-export const ROOM_NAME = "MAIN_ROOM";
+export const ROOM_NAME = "GENERAL";

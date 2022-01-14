@@ -10,8 +10,6 @@ const activeUsers: IUser[] = [];
 const getCurrentUser = (id: string) => activeUsers.find(u => u.id === id);
 
 const userJoin = (newUser: IUser): void => {
-    // Validar que el usuario no este en el array 
-    if (activeUsers.find(u => u.username === newUser.username)) throw new Error("Nombre de Usuario Repetido");
     activeUsers.push(newUser);
 };
 
